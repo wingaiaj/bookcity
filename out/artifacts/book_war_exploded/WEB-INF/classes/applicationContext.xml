@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE beans [
+        <!ELEMENT beans (bean*)>
+        <!ELEMENT bean (property*)>
+        <!ELEMENT property (#PCDATA)>
+
+        <!ATTLIST bean id ID #REQUIRED>
+        <!ATTLIST bean class CDATA #IMPLIED>
+        <!ATTLIST property name CDATA #IMPLIED>
+        <!ATTLIST property ref IDREF #IMPLIED>
+        ]>
+<beans>
+    <bean id="UserDAOImp" class="com.zx.book.dao.Imp.UserDAOImp"/>
+    <bean id="UserServiceImp" class="com.zx.book.service.Imp.UserServiceImp">
+        <property name="userDAO" ref="UserDAOImp"/>
+    </bean>
+
+    <bean id="user" class="com.zx.book.controller.UserController">
+        <property name="userService" ref="UserServiceImp"/>
+    </bean>
+    <bean id="page" class="com.zx.myssm.springmvc.PageController"/>
+</beans>
